@@ -1,1 +1,6 @@
-# opengl-gimbal-lock
+# OpenGL Gimbal Lock
+
+# Dependencies
+
+libgl-dev
+libassimp-dev
