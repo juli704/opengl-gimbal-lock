@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>fragshader/beige.frag</file>
+        <file>fragshader/mint.frag</file>
+        <file>fragshader/storm.frag</file>
+        <file>objects/ring.obj</file>
+        <file>vertshader/model.vert</file>
+    </qresource>
+</RCC>
