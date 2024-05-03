@@ -39,44 +39,53 @@
     <item>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
-       <widget class="QSlider" name="verticalSlider">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
+       <widget class="QSlider" name="outerRingSlider">
+        <property name="maximum">
+         <number>180</number>
         </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QSlider" name="verticalSlider_3">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item row="0" column="2">
-       <widget class="QSlider" name="verticalSlider_2">
+       <widget class="QSlider" name="innerRingSlider">
+        <property name="maximum">
+         <number>180</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QSlider" name="middleRingSlider">
+        <property name="maximum">
+         <number>180</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="outerRingLabel">
         <property name="text">
-         <string>Inner</string>
+         <string>Outer</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLabel" name="label_2">
+       <widget class="QLabel" name="middleRingLabel">
         <property name="text">
          <string>Middle</string>
         </property>
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="innerRingLabel">
         <property name="text">
-         <string>Outer</string>
+         <string>Inner</string>
         </property>
        </widget>
       </item>

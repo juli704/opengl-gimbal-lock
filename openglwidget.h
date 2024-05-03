@@ -16,6 +16,12 @@ public:
     void initializeGL() override;
     void paintGL() override;
 
+public slots:
+
+    void setOuterRingAngle(const int angle);
+    void setMiddleRingAngle(const int angle);
+    void setInnerRingAngle(const int angle);
+
 private:
 
     Model* outerRingModel;
@@ -27,6 +33,10 @@ private:
     QMatrix4x4 innerRingRotationMatrix;
 
     QMatrix4x4 viewMatrix;
+
+    int outerRingAngle;
+    int middleRingAngle;
+    int innerRingAngle;
 };
 
 #endif // OPENGLWIDGET_H

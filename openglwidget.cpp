@@ -1,7 +1,10 @@
 #include "openglwidget.h"
 
 OpenGLWidget::OpenGLWidget(QWidget *parent) :
-    QOpenGLWidget(parent) {}
+    QOpenGLWidget(parent),
+    outerRingAngle(0),
+    middleRingAngle(0),
+    innerRingAngle(0) {}
 
 OpenGLWidget::~OpenGLWidget() {}
 
@@ -12,6 +15,9 @@ void OpenGLWidget::initializeGL()
 
     // Set scene's clear color to light gray
     glClearColor(0.9f, 0.9f, 0.9f, 0.5f);
+
+    // Enable objects to be in front of / hide each other
+    glEnable(GL_DEPTH_TEST);
 
     // Create ring models
     const QString objectFilePath = ":/objects/ring.obj";
@@ -32,6 +38,7 @@ void OpenGLWidget::paintGL()
     // Clear screen //
 
     glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_DEPTH_BUFFER_BIT);
 
 
     // Calculate current projection matrix //
@@ -49,14 +56,14 @@ void OpenGLWidget::paintGL()
     // Calculate ring rotations //
 
     this->outerRingRotationMatrix = QMatrix4x4();
-    this->outerRingRotationMatrix.rotate(50, QVector3D(1,0,0));
+    this->outerRingRotationMatrix.rotate(this->outerRingAngle, QVector3D(1,0,0));
 
     this->middleRingRotationMatrix = QMatrix4x4();
-    this->middleRingRotationMatrix.rotate(50, QVector3D(0,1,0));
+    this->middleRingRotationMatrix.rotate(this->middleRingAngle, QVector3D(0,1,0));
     this->middleRingRotationMatrix = this->outerRingRotationMatrix * this->middleRingRotationMatrix;
 
     this->innerRingRotationMatrix = QMatrix4x4();
-    this->innerRingRotationMatrix.rotate(50, QVector3D(1,0,0));
+    this->innerRingRotationMatrix.rotate(this->innerRingAngle, QVector3D(1,0,0));
     this->innerRingRotationMatrix = this->middleRingRotationMatrix * this->innerRingRotationMatrix;
 
 
@@ -67,4 +74,19 @@ void OpenGLWidget::paintGL()
     this->innerRingModel->draw(projectionMatrix, this->viewMatrix, this->innerRingRotationMatrix, 1.0);
 
     this->update();
+}
+
+void OpenGLWidget::setOuterRingAngle(const int angle)
+{
+    this->outerRingAngle = angle;
+}
+
+void OpenGLWidget::setMiddleRingAngle(const int angle)
+{
+    this->middleRingAngle = angle;
+}
+
+void OpenGLWidget::setInnerRingAngle(const int angle)
+{
+    this->innerRingAngle = angle;
 }
