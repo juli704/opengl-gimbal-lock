@@ -2,7 +2,7 @@
 
 ![opengl-gimbal-lock-demo.gif](demo/opengl-gimbal-lock-demo.gif)
 
-A graphical user interface for controlling the rings of a gimbal lock system.
+A graphical user interface for controlling the rings of a gimbal lock system
 
 Tech stack:
 - C++
